@@ -42,7 +42,7 @@ class FibonacciSequenceViewSet(views.APIView):
         else:
             return Response({
                 'status' : 'Bad request',
-                'message': '\'fib_to\' field is required.'
+                'message': '\'to\' field is required.'
             }, status=status.HTTP_400_BAD_REQUEST)
   
         fibonaccisequence = self.fibonacci_sequence(fib_from, fib_to)

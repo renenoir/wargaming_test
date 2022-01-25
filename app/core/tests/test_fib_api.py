@@ -22,7 +22,7 @@ class FibonacciApiTests(TestCase):
         """Test returning fibonacci slice"""
         res = self.client.get(
             FIBONACCI_URL,
-            {'fib_from': '5', 'fib_to': '10'}
+            {'from': '5', 'to': '10'}
         )
         self.assertEqual(res.data['data'], [5,8,13,21,34,55])
     
@@ -30,7 +30,7 @@ class FibonacciApiTests(TestCase):
         """Test that redis cache is working"""
         res = self.client.get(
             FIBONACCI_URL,
-            {'fib_from': '10', 'fib_to': '15'}
+            {'from': '10', 'to': '15'}
         )
         redis_cache = []
         for x in range(10, 16):
@@ -43,7 +43,7 @@ class FibonacciApiTests(TestCase):
         """Test that fibonacci number calculates correctly"""
         res = self.client.get(
             FIBONACCI_URL,
-            {'fib_from': '10', 'fib_to': '15'}
+            {'from': '10', 'to': '15'}
         )
         
         self.assertEqual(
